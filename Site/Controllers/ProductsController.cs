@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Site.Models;
 using Site.Repositories;
@@ -30,18 +31,21 @@ namespace Site.Controllers
         {
             var model = new ProductCreateNewViewModel();
             var categories = _productRepository.GetCategories();
-            return View(model.CreateDropDowmList(categories));
+            model = model.CreateDropDowmList(categories);
+            return View(model);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(ProductCreateNewViewModel model)
         {
+            var categories = _productRepository.GetCategories();
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Add");
+                model = model.CreateDropDowmList(categories);
+                return View(model);
             }
 
-            var categories = _productRepository.GetCategories();
             var newProduct = model.GetModel(categories);
 
             _productRepository.Add(newProduct);

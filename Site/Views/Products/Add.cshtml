@@ -15,29 +15,46 @@
 }
 
 <h2>Add</h2>
-@using (Html.BeginForm("Add", "Products", FormMethod.Post))
+@using (Html.BeginForm("Add", "Products", FormMethod.Post, new { @class = "form" }))
 {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-    
-    @Html.LabelFor(x=>x.Name)
-    @Html.TextBoxFor(x => x.Name)
-    
-    @Html.LabelFor(x=>x.PurchaseCost)
-    @Html.TextBoxFor(x => x.PurchaseCost)
-    
-    @Html.LabelFor(x=>x.Price)
-    @Html.TextBoxFor(x => x.Price)
-    
-    @Html.LabelFor(x=>x.Quantity)
-    @Html.TextBoxFor(x => x.Quantity)
-    
-    @Html.LabelFor(x=>x.SelectedCategoryId)
-    @Html.DropDownListFor(x=>x.SelectedCategoryId, Model.Categories)
-    
-    <span class="new-category-label" style="display: none;">New Category Name</span>
-    @Html.TextBoxFor(x => x.NewCategory, new { style = "display: none;" } )
-    
-    <input type="submit" value="Create"/>
+    <fieldset>
+        <legend> Add new product:</legend>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(false)
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.PurchaseCost)
+            @Html.TextBoxFor(x => x.PurchaseCost, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.PurchaseCost)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Price)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Quantity)
+            @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Quantity)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.SelectedCategoryId)
+            @Html.DropDownListFor(x => x.SelectedCategoryId, Model.Categories, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.SelectedCategoryId)
+        </div>
+        <div class="form-group">
+            <label class="new-category-label" style="display: none;">
+                New Category Name
+            </label>
+            @Html.TextBoxFor(x => x.NewCategory, new { @class = "form-control", style = "display: none;" })
+            @Html.ValidationMessageFor(x => x.NewCategory)
+        </div>
+
+        <button type="submit" class="btn">Create</button>
+    </fieldset>
 }
 

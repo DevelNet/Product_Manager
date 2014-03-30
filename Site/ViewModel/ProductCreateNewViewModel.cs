@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,15 +14,23 @@ namespace Site.ViewModel
         {
             Categories = new List<SelectListItem>();
         }
+
+        [Display(Name = "Purchase Cost")]
+        [DataType(DataType.Currency)]
         public double? PurchaseCost { get; set; }
 
+        [DataType(DataType.Currency)]
         public double? Price { get; set; }
 
         public int? Quantity { get; set; }
 
         public string Name { get; set; }
 
+        [Display(Name = "Category")]
         public int? SelectedCategoryId { get; set; }
+
+        [Display(Name = "New Category Name")]
+        public string NewCategory { get; set; }
 
         public List<SelectListItem> Categories { get; set; }
 
@@ -65,7 +74,5 @@ namespace Site.ViewModel
 
             return this;
         }
-
-        public string NewCategory { get; set; }
     }
 }
