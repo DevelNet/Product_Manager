@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace Site.Models
+namespace Domain.Models
 {
-    public class Category
+    public class Category : BaseEntity
     {
         public Category()
         {
             Products = new HashSet<Product>();
         }
-        public int Id { get; set; }
 
         public string Name { get; set; }
 

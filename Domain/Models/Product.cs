@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Web;
-
-namespace Site.Models
+﻿namespace Domain.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public int Id { get; set; }
-
         public double? PurchaseCost { get; set; }
 
         public double? Price { get; set; }

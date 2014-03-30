@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using Site.Models;
-using Site.Repositories;
+using Data.Repositories;
 using Site.ViewModel;
 
 namespace Site.Controllers

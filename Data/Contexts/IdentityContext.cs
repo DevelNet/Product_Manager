@@ -1,11 +1,8 @@
 ﻿using System.Data.Entity;
+using Data.Mappings;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Site.Models
+namespace Data.Contexts
 {
     public class IdentityContext : IdentityDbContext<User>
     {

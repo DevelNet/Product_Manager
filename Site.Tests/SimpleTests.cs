@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Data.Contexts;
+using Domain.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Site.Models;
 
 namespace Site.Tests
 {

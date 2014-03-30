@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
-using Site.Models;
+using Data.Contexts;
+using Domain.Models;
 
-namespace Site.Repositories
+namespace Data.Repositories
 {
     public class ProductRepository
     {

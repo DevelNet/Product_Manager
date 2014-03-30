@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Site.Models;
+using Domain.Models;
 
 namespace Site.ViewModel
 {
