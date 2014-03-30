@@ -1,0 +1,54 @@
+﻿@using System.Web.Optimization
+@using Site.Models
+@model IList<Site.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+@section CssStyles
+{
+    @Styles.Render("~/Content/Custom/Products.css")
+}
+
+@section Scripts
+{
+    
+}
+
+<h2>Index</h2>
+
+<table class="products-list">
+    <thead>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Category</td>
+        <td>
+            Actions
+            @Html.ActionLink("Add","Add","Products", new{@class="btn btn-mini btn-info add-product"} )
+        </td>
+    </thead>
+    @foreach (Product product in Model)
+    {
+        <tr>
+            <td>
+                @product.Name
+            </td>
+            <td>
+                @product.Price
+            </td>
+            <td>
+                @product.Category.Name
+            </td>
+            <td>
+                @Html.ActionLink("Edit","Edit","Products",new{id=product.Id},new{@class="btn btn-mini btn-primary"})
+                @Html.ActionLink("Details", "Details", "Products",new{id=product.Id}, new { @class = "btn btn-mini btn-warning" })
+                @Html.ActionLink("Remove", "Remove", "Products",new{id=product.Id}, new { @class = "btn btn-mini btn-danger" })
+            </td>
+        </tr>
+    }
+    <tfoot>
+        <td></td>
+        <td></td>
+        <td>Total: @Model.Sum(x=>x.Price)</td>
+    </tfoot>
+</table>

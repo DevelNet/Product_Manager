@@ -1,0 +1,22 @@
+﻿.products-list td,.products-list tr 
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.products-list tbody tr:nth-of-type(odd) {
+    background: #d3d3d3;
+}
+
+.products-list thead 
+{
+    background: #add8e6;
+    font: "Monotype Corsiva";
+}
+
+.add-product {
+    position: relative;
+    right: -50%;
+}

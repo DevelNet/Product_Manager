@@ -1,0 +1,43 @@
+﻿@using System.Web.Optimization
+@model Site.ViewModel.ProductCreateNewViewModel
+@{
+    ViewBag.Title = "Add";
+}
+
+@section CssStyles
+{
+    @Styles.Render("~/Content/Custom/Products.css")
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/Custom/products-add.js")
+}
+
+<h2>Add</h2>
+@using (Html.BeginForm("Add", "Products", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    
+    @Html.LabelFor(x=>x.Name)
+    @Html.TextBoxFor(x => x.Name)
+    
+    @Html.LabelFor(x=>x.PurchaseCost)
+    @Html.TextBoxFor(x => x.PurchaseCost)
+    
+    @Html.LabelFor(x=>x.Price)
+    @Html.TextBoxFor(x => x.Price)
+    
+    @Html.LabelFor(x=>x.Quantity)
+    @Html.TextBoxFor(x => x.Quantity)
+    
+    @Html.LabelFor(x=>x.SelectedCategoryId)
+    @Html.DropDownListFor(x=>x.SelectedCategoryId, Model.Categories)
+    
+    <span class="new-category-label" style="display: none;">New Category Name</span>
+    @Html.TextBoxFor(x => x.NewCategory, new { style = "display: none;" } )
+    
+    <input type="submit" value="Create"/>
+}
+
