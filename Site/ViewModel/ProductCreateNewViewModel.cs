@@ -24,6 +24,7 @@ namespace Site.ViewModel
 
         public int? Quantity { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         [Display(Name = "Category")]
@@ -63,7 +64,8 @@ namespace Site.ViewModel
             Categories = categories.Select(x => new SelectListItem()
             {
                 Value = x.Id.ToString(),
-                Text = x.Name
+                Text = x.Name,
+                Selected = SelectedCategoryId.HasValue && SelectedCategoryId == x.Id
             }).ToList();
 
             Categories.Add(new SelectListItem()

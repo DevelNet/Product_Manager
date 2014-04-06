@@ -1,0 +1,56 @@
+﻿@using System.Web.Optimization
+@model Site.ViewModel.ProductEditViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+@section CssStyles
+{
+    @Styles.Render("~/Content/Custom/Products.css")
+}
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/Custom/products-add.js")
+}
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new {@class = "form"}))
+{
+    <fieldset>
+        <legend >Edit @Model.Name</legend>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(false)
+        @Html.HiddenFor(x=>x.Id)
+        <div class="form-group">
+            @Html.LabelFor(x=>x.Name)
+            @Html.TextBoxFor(x=>x.Name,new{@class = "form-control"})
+            @Html.ValidationMessageFor(x=>x.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.PurchaseCost)
+            @Html.TextBoxFor(x => x.PurchaseCost, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.PurchaseCost)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Price)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Quantity)
+            @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Quantity)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.SelectedCategoryId)
+            @Html.DropDownListFor(x => x.SelectedCategoryId, Model.Categories, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.SelectedCategoryId)
+        </div>
+        <div class="form-group">
+            <label class="new-category-label" style="display: none;">
+                New Category Name
+            </label>
+            @Html.TextBoxFor(x => x.NewCategory, new { @class = "form-control", style = "display: none;" })
+            @Html.ValidationMessageFor(x => x.NewCategory)
+        </div>
+        <button type="submit" class="btn">Edit</button>
+    </fieldset>
+}

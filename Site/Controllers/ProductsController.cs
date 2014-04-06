@@ -61,13 +61,35 @@ namespace Site.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            var model = new ProductEditViewModel();
+            var currentProduct = _productRepository.GetById(id);
+            model.MapProduct(currentProduct);
+            var categories = _productRepository.GetCategories();
+            model.CreateDropDowmList(categories);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ProductEditViewModel model)
+        {
+            var categories = _productRepository.GetCategories();
+            if (!ModelState.IsValid)
+            {
+                model.CreateDropDowmList(categories);
+                return View(model);
+            }
+            var oldProduct = _productRepository.GetById(model.Id);
+            var updatedProduct = model.UpdateProduct(oldProduct,categories);
+            _productRepository.Update(updatedProduct);
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
         public ActionResult Remove(int id)
         {
-            return View();
+            var product = _productRepository.GetById(id);
+            _productRepository.Delete(product);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -10,6 +10,10 @@
     background: #d3d3d3;
 }
 
+.products-list thead tr td:last-of-type {
+    min-width: 250px;
+}
+
 .products-list thead 
 {
     background: #add8e6;
