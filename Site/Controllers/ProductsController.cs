@@ -9,6 +9,7 @@ using Site.ViewModel;
 
 namespace Site.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private readonly ProductRepository _productRepository;
@@ -55,7 +56,12 @@ namespace Site.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            return View();
+            var model = new ProductDetailViewModel();
+            var currentProduct = _productRepository.GetById(id);
+            model.MapProduct(currentProduct);
+            var categories = _productRepository.GetCategories();
+            model.CreateDropDowmList(categories);
+            return View(model);
         }
 
         [HttpGet]

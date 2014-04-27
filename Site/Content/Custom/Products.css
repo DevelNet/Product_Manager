@@ -29,6 +29,3 @@ form {
     width: 50%;
 }
 
-.validation-summary-errors, .field-validation-error {
-    color: #ff0000;
-}

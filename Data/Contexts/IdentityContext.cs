@@ -13,7 +13,13 @@ namespace Data.Contexts
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new User_Mapping());
+        }
+
+        public static IdentityContext Create()
+        {
+            return new IdentityContext();
         }
     }
 }

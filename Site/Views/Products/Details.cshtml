@@ -1,0 +1,36 @@
+﻿@using System.Web.Optimization
+@model Site.ViewModel.ProductDetailViewModel
+@{
+    ViewBag.Title = "Details";
+}
+@section CssStyles
+{
+    @Styles.Render("~/Content/Custom/Products.css")
+}
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/Custom/products-add.js")
+}
+<h2>Details</h2>
+<div class="form">
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name)
+        @Html.DisplayFor(x => x.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.PurchaseCost)
+        @Html.DisplayFor(x => x.PurchaseCost, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Price)
+        @Html.DisplayFor(x => x.Price, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Quantity)
+        @Html.DisplayFor(x => x.Quantity, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.SelectedCategoryId)
+        @Html.DisplayFor(x=>x.Category, new { @class = "form-control" })
+    </div>
+</div>

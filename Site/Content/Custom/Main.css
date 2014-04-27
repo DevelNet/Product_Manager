@@ -1,0 +1,11 @@
+﻿.validation-summary-errors, .field-validation-error {
+    color: #ff0000;
+}
+a.selected
+{
+    background: #000000;
+                color:#ffffff;
+}
+a.selected:hover {
+    color: #a77777 !important;
+}
