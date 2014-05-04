@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    @Styles.Render("~/Content/Custom/Main.css")
     @RenderSection("CssStyles", false)
+    @Styles.Render("~/Content/Custom/Main.css")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -27,9 +27,21 @@
                 </button>
                 @Html.ActionLink("Home Page", "Index", "Home", null, new { @class = "navbar-brand" + selectCurrentController("Home")})
                 @Html.ActionLink("Products Page", "Index", "Products", null, new { @class = "navbar-brand" + selectCurrentController("Products") })
+                @if (User.Identity.IsAuthenticated!=true)
+                {
+                    <span class="user-log">
                 @Html.ActionLink("Login","Login","Account",new{returnUrl = ""}, new {@class = "navbar-brand"})
                 @Html.ActionLink("Register", "Register", "Account",null, new { @class = "navbar-brand" })
-            </div>
+                        </span>
+                }
+                else
+                {
+                    <span class="user-log">
+                        @Html.ActionLink(User.Identity.Name.ToString(),"UserInfo","Account",null,new{@class="navbar-brand"})
+                        @Html.ActionLink("Logout","Logout","Account",null,new{@class="navbar-brand"})
+                    </span>
+                }
+                </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                 </ul>

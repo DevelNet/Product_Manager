@@ -10,18 +10,34 @@ namespace Site.ViewModel
     public class UserRegisterViewModel
     {
         [Required]
+        [Display(Name = "Name *")]
+        [StringLength(25,ErrorMessage = "too long")]
+        public string Name { get; set; }
+
+        [Display(Name = "Age")]
+        public int Age { get; set; }
+
+        [Display(Name = "Phone")]
+        [DataType(DataType.PhoneNumber,ErrorMessage = "Wrong format")]
+        public string Phone { get; set; }
+
+        [Required]
+        [Display(Name = "Balance *")]
+        public double Balance { get; set; }
+
+        [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Email *")]
         public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password *")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm password *")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }

@@ -1,0 +1,26 @@
+﻿@model Site.ViewModel.UserEditViewModel
+@{
+    ViewBag.Title = "UserInfo";
+}
+
+<h2>UserInfo</h2>
+<div class="row">
+    @Html.LabelFor(x=>x.Email)
+    @Html.DisplayFor(x=>x.Email)
+</div>
+<div class="row">
+    @Html.LabelFor(x => x.Name)
+    @Html.DisplayFor(x => x.Name)
+</div>
+<div class="row">
+    @Html.LabelFor(x => x.Age)
+    @Html.DisplayFor(x => x.Age)
+</div>
+<div class="row">
+    @Html.LabelFor(x => x.Phone)
+    @Html.DisplayFor(x => x.Phone)
+</div>
+<div class="row">
+    @Html.LabelFor(x => x.Balance)
+    @Html.DisplayFor(x => x.Balance)
+</div>

@@ -30,6 +30,33 @@
         </div>
     </div>
     <div class="form-group">
+            @Html.LabelFor(x=>x.Name, new{ @class ="col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(x=>x.Name, new{@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+            @Html.LabelFor(x=>x.Age, new{ @class ="col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(x=>x.Age, new{@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+            @Html.LabelFor(x=>x.Phone, new{ @class ="col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(x=>x.Phone, new{@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+            @Html.LabelFor(x=>x.Balance, new{ @class ="col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(x=>x.Balance, new{@class = "form-control"})
+        </div>
+    </div>
+    <strong>
+        Fields with * are required.
+    </strong>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>

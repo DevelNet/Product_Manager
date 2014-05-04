@@ -9,3 +9,9 @@ a.selected
 a.selected:hover {
     color: #a77777 !important;
 }
+span.user-log {
+    height: 40px;
+    clear: both;
+    position: absolute;
+    right: 70px !important; 
+}

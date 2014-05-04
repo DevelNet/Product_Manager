@@ -62,8 +62,8 @@ namespace Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.Email, model.Password);
-                if (user != null)
+                var user = await UserManager.FindByEmailAsync(model.Email);
+                if (user != null && await UserManager.CheckPasswordAsync(user, model.Password))
                 {
                     await SignInAsync(user, model.Remember);
                     return RedirectToLocal(returnUrl);
@@ -90,7 +90,7 @@ namespace Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User() { UserName = model.Email, Email = model.Email };
+                var user = new User() { UserName = model.Name, Email = model.Email, Age=model.Age, Phone=model.Phone, Balance = model.Balance, Name = model.Name};
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -108,6 +108,22 @@ namespace Site.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult UserInfo()
+        {
+            var user = UserManager.FindByName(User.Identity.Name);
+            var model = new UserEditViewModel();
+            model.MapUser(user);
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index","Home");
         }
 
         [HttpGet]
