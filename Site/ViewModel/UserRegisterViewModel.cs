@@ -9,14 +9,14 @@ namespace Site.ViewModel
 {
     public class UserRegisterViewModel
     {
+        [Display(Name = "Age *")]
+        public int Age { get; set; }
+
         [Required]
         [Display(Name = "Name *")]
         [StringLength(25,ErrorMessage = "too long")]
         public string Name { get; set; }
-
-        [Display(Name = "Age")]
-        public int Age { get; set; }
-
+ 
         [Display(Name = "Phone")]
         [DataType(DataType.PhoneNumber,ErrorMessage = "Wrong format")]
         public string Phone { get; set; }

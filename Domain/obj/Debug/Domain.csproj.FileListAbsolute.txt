@@ -1,0 +1,5 @@
+C:\Users\Krivetsky\Documents\GitHub\Product_Manager\Domain\bin\Debug\Domain.dll
+C:\Users\Krivetsky\Documents\GitHub\Product_Manager\Domain\bin\Debug\Domain.pdb
+C:\Users\Krivetsky\Documents\GitHub\Product_Manager\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Krivetsky\Documents\GitHub\Product_Manager\Domain\obj\Debug\Domain.dll
+C:\Users\Krivetsky\Documents\GitHub\Product_Manager\Domain\obj\Debug\Domain.pdb

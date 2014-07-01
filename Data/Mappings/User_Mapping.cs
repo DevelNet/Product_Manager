@@ -7,11 +7,11 @@ namespace Data.Mappings
     {
         public User_Mapping()
         {
-          /*  Property(x => x.Age).IsOptional();
+            Property(x => x.Age).IsOptional();
             Property(x => x.Name).IsRequired().HasMaxLength(24);
             Property(x => x.Email).IsRequired();
             Property(x => x.Phone).IsOptional().HasMaxLength(12);
-            Property(x => x.Balance).IsOptional();*/
+            Property(x => x.Balance).IsOptional();
         }
     }
 }

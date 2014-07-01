@@ -30,5 +30,29 @@ namespace Site.Tests
 
             Assert.IsTrue(stxContext.Products.Any());
         }
+        [TestMethod]
+        public void TestMethod2()
+        {
+            EntitiesContext stxContext = new EntitiesContext();
+
+            for (int i = 0; i < 100; i++)
+            {
+                stxContext.Products.Add(new Product()
+                {
+                    Category = new Category()
+                    {
+                        Name = "TestCategory" + i
+                    },
+                    Name = "TestProduct" + i,
+                    PurchaseCost = 100 * i,
+                    Price = 150 * i,
+                    Quantity = 10*i
+                });
+
+                stxContext.SaveChanges();
+
+                Assert.IsTrue(stxContext.Products.Any());
+            }
+        }
     }
 }

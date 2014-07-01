@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -21,9 +22,14 @@ namespace Site.Controllers
         [HttpGet]
         //
         // GET: /Products/
-        public ActionResult Index()
+        public ActionResult Index(int numberOfElements=10,int page=1)
         {
-            return View(_productRepository.GetAll());
+            var model = new PageViewModel();
+            model.Page = page;
+            model.NumberOfElements = numberOfElements;
+            model.PageAll = _productRepository.GetAll().Count/numberOfElements;
+            model.product = _productRepository.GetByPage(model.NumberOfElements,model.Page);
+            return View(model);
         }
         
         [HttpGet]

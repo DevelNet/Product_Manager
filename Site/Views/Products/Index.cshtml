@@ -1,6 +1,6 @@
 ﻿@using System.Web.Optimization
 @using Domain.Models
-@model IList<Domain.Models.Product>
+@model Site.ViewModel.PageViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -12,7 +12,7 @@
 
 @section Scripts
 {
-    
+    $
 }
 
 <h2>Index</h2>
@@ -27,7 +27,7 @@
             @Html.ActionLink("Add","Add","Products", new{@class="btn btn-mini btn-info add-product"} )
         </td>
     </thead>
-    @foreach (Product product in Model)
+    @foreach (Product product in Model.product)
     {
         <tr>
             <td>
@@ -49,6 +49,26 @@
     <tfoot>
         <td></td>
         <td></td>
-        <td>Total: @Model.Sum(x=>x.Price)</td>
+        <td>Total: @Model.product.Sum(x=>x.Price)</td>
     </tfoot>
 </table>
+<div>
+    @if (Model.NumberOfElements > 0)
+    {
+        if (Model.Page > 0 && Model.Page != 1)
+        {
+            @Html.ActionLink("Previous", "Index", new { numberOfElements = Model.NumberOfElements, page = Model.Page - 1 })
+        }
+        if (Model.Page > 0 && Model.Page != Model.PageAll - 1)
+        {
+            @Html.ActionLink("Next", "Index", new { numberOfElements = Model.NumberOfElements, page = Model.Page + 1 })
+        }
+    }
+</div>
+<br>
+    @Html.TextBox("SetPage","Enter Page",new{id="textboxid1"})
+    @Html.ActionLink("Refresh","Index", new{id ="actionid1"})
+    @Html.TextBox("SetNumber", "Enter number of elements", new { id = "textboxid2" })
+    @Html.ActionLink("Refresh", "Index", new { id = "actionid2" })
+</br>
+
